@@ -8,7 +8,77 @@ A positive saving means a shorter wait. For each qualifying round, the analysis 
 
 ## Gemma 4 26B-A4B
 
-No measurement file is available for this model.
+Complete. 5/5 planned rounds completed. The raw record contains 0 abandoned round attempts. [Per-request JSON](results/correct-answers-gemma.json)
+
+### Stock and rebuilt
+
+| Task | Stock correct/graded | Rebuilt correct/graded | Correct pairs | Stock median (s) | Rebuilt median (s) | Paired time saved, median [min, max] |
+|---|---:|---:|---:|---:|---:|---:|
+| First answer after launch | 5/5 | 5/5 | 5/5 | 31.24 | 21.31 | +31.12% [+21.12, +35.96] |
+| Fresh explanation | 5/5 | 5/5 | 5/5 | 43.37 | 19.38 | +54.89% [+47.20, +60.21] |
+| Release handover | 5/5 | 5/5 | 5/5 | 131.05 | 41.97 | +68.53% [+66.92, +70.78] |
+| Python code edit | 5/5 | 5/5 | 5/5 | 46.74 | 21.55 | +57.33% [+52.59, +62.95] |
+| 144-token decode control | 5/5 | 5/5 | 5/5 | 55.25 | 27.44 | +52.31% [+46.36, +56.68] |
+
+Correct/graded includes all returned answers across retained and abandoned attempts. Correct pairs counts complete matched rounds only. Missing requests and failed grades remain visible in the raw data and summary JSON. A task with zero correct pairs has no time-to-correct estimate.
+
+| Task | First text (s), Stock / Rebuilt | Decode (tokens/s), Stock / Rebuilt | Output token range, Stock / Rebuilt | Same length | Same token IDs |
+|---|---:|---:|---:|---:|---:|
+| First answer after launch | 30.78 / 21.03 | 2.12 / 3.60 | 2 / 2 | 5/5 | 5/5 |
+| Fresh explanation | 27.54 / 11.31 | 2.84 / 5.72 | 46 / 46 | 5/5 | 5/5 |
+| Release handover | 114.86 / 33.47 | 2.51 / 4.89 | 42 / 42 | 5/5 | 5/5 |
+| Python code edit | 32.93 / 14.46 | 2.95 / 5.86 | 42 / 42 | 5/5 | 5/5 |
+| 144-token decode control | 6.19 / 3.81 | 2.91 / 6.23 | 144 / 144 | 5/5 | 0/5 |
+
+### Rebuilt and tuned
+
+| Task | Rebuilt correct/graded | Tuned correct/graded | Correct pairs | Rebuilt median (s) | Tuned median (s) | Paired time saved, median [min, max] |
+|---|---:|---:|---:|---:|---:|---:|
+| First answer after launch | 5/5 | 5/5 | 5/5 | 21.31 | 18.20 | +15.91% [+10.16, +19.31] |
+| Fresh explanation | 5/5 | 5/5 | 5/5 | 19.38 | 19.96 | -0.75% [-7.02, +12.91] |
+| Release handover | 5/5 | 5/5 | 5/5 | 41.97 | 39.38 | +4.88% [+0.27, +6.17] |
+| Python code edit | 5/5 | 5/5 | 5/5 | 21.55 | 19.49 | -1.31% [-11.66, +9.56] |
+| 144-token decode control | 5/5 | 5/5 | 5/5 | 27.44 | 26.94 | +3.13% [-4.17, +5.85] |
+
+Correct/graded includes all returned answers across retained and abandoned attempts. Correct pairs counts complete matched rounds only. Missing requests and failed grades remain visible in the raw data and summary JSON. A task with zero correct pairs has no time-to-correct estimate.
+
+| Task | First text (s), Rebuilt / Tuned | Decode (tokens/s), Rebuilt / Tuned | Output token range, Rebuilt / Tuned | Same length | Same token IDs |
+|---|---:|---:|---:|---:|---:|
+| First answer after launch | 21.03 / 17.94 | 3.60 / 3.77 | 2 / 2 | 5/5 | 5/5 |
+| Fresh explanation | 11.31 / 11.78 | 5.72 / 5.50 | 46 / 46 | 5/5 | 5/5 |
+| Release handover | 33.47 / 31.27 | 4.89 / 5.09 | 42 / 42 | 5/5 | 5/5 |
+| Python code edit | 14.46 / 12.54 | 5.86 / 5.85 | 42 / 42 | 5/5 | 5/5 |
+| 144-token decode control | 3.81 / 4.11 | 6.23 / 6.26 | 144 / 144 | 5/5 | 5/5 |
+
+### Observed startup and reply times, including incorrect answers
+
+Startup runs from process launch until the server reports ready.
+
+| Build | Ready launches | Median startup (s) |
+|---|---:|---:|
+| Stock | 5 | 10.91 |
+| Rebuilt | 5 | 9.67 |
+| Tuned | 5 | 7.40 |
+
+The medians below use every completed reply from each build, including replies from unfinished or abandoned rounds. Correct/graded gives the number of those replies that passed. For the first reply, both times start at process launch. For warm workloads, both start at the client request.
+
+| Task | Build | Correct/graded | Median first text (s) | Median full reply (s) | Median decode (tokens/s) |
+|---|---|---:|---:|---:|---:|
+| First answer after launch | Stock | 5/5 | 30.78 | 31.24 | 2.12 |
+| First answer after launch | Rebuilt | 5/5 | 21.03 | 21.31 | 3.60 |
+| First answer after launch | Tuned | 5/5 | 17.94 | 18.20 | 3.77 |
+| Fresh explanation | Stock | 5/5 | 27.54 | 43.37 | 2.84 |
+| Fresh explanation | Rebuilt | 5/5 | 11.31 | 19.38 | 5.72 |
+| Fresh explanation | Tuned | 5/5 | 11.78 | 19.96 | 5.50 |
+| Release handover | Stock | 5/5 | 114.86 | 131.05 | 2.51 |
+| Release handover | Rebuilt | 5/5 | 33.47 | 41.97 | 4.89 |
+| Release handover | Tuned | 5/5 | 31.27 | 39.38 | 5.09 |
+| Python code edit | Stock | 5/5 | 32.93 | 46.74 | 2.95 |
+| Python code edit | Rebuilt | 5/5 | 14.46 | 21.55 | 5.86 |
+| Python code edit | Tuned | 5/5 | 12.54 | 19.49 | 5.85 |
+| 144-token decode control | Stock | 5/5 | 6.19 | 55.25 | 2.91 |
+| 144-token decode control | Rebuilt | 5/5 | 3.81 | 27.44 | 6.23 |
+| 144-token decode control | Tuned | 5/5 | 4.11 | 26.94 | 6.26 |
 
 ## Qwen2.5-Coder 0.5B
 
