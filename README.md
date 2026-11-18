@@ -1,6 +1,8 @@
 # Time to a correct local LLM answer on an Intel Mac
 
-How much sooner does a correct answer arrive after rebuilding the inference engine for a 2019 Intel MacBook Pro? This project compares the released ToshLLM v0.88.0 Intel binary with a local rebuild on the same Core i9-9880H and Radeon Pro 560X. Gemma 4 26B-A4B and Qwen2.5-Coder 0.5B are evaluated separately with their respective GGUF files.
+![Median warm time to a correct answer for each model and workload](results/warm-latency.png)
+
+This project compares the released ToshLLM v0.88.0 Intel binary with a local rebuild on the same Core i9-9880H and Radeon Pro 560X. The chart shows median time to a correct answer within matched pairs. Each task uses five rounds on one 2019 Intel MacBook Pro.
 
 [Before-and-after chart, correctness counts and paired results](REPORT.md) · [Build-blind review of the answers](ANSWER-REVIEW.md)
 
