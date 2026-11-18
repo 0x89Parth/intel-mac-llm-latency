@@ -1,0 +1,30 @@
+[
+  {
+    "id": "0d3aab0daee99481bc2ddb5ff3453ea26a25eb7ad68a80796a881d5b938c2ee9",
+    "task": "code_edit",
+    "semantic_correct": true,
+    "instruction_pass": false,
+    "reason": "The signature supports positional and keyword calls, and the conditional clamps the difference at zero. The Markdown fence adds text outside the requested function."
+  },
+  {
+    "id": "59314300dfe1422265ea0eed9d7d1b13b268433cea8b344a3cda74bae1a562f4",
+    "task": "cold",
+    "semantic_correct": false,
+    "instruction_pass": true,
+    "reason": "The reply contains just an integer, but eight minus three is five."
+  },
+  {
+    "id": "9a472ca6b2a768833eced3ff34eb9b9f7b8bb1b4d2ea1d83936d194c61eeb4ec",
+    "task": "explanation",
+    "semantic_correct": false,
+    "instruction_pass": false,
+    "reason": "It gives 7 as the default but omits both the absence of insertion and the subsequent KeyError. It exceeds two sentences and ends mid-sentence."
+  },
+  {
+    "id": "f6f164c14255bd2602d6cb3a4fe5de4ed261243ce4b255ca4d8fd9df2581b4a8",
+    "task": "long_prompt",
+    "semantic_correct": true,
+    "instruction_pass": false,
+    "reason": "All three keys and values match the final Atlas record. The Markdown fence prevents the whole reply from being a JSON object."
+  }
+]

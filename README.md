@@ -2,6 +2,8 @@
 
 How much sooner does a correct answer arrive after rebuilding the inference engine for a 2019 Intel MacBook Pro? This project compares the released ToshLLM v0.88.0 Intel binary with a local rebuild on the same Core i9-9880H and Radeon Pro 560X. Gemma 4 26B-A4B and Qwen2.5-Coder 0.5B are evaluated separately with their respective GGUF files.
 
+[Before-and-after chart, correctness counts and paired results](REPORT.md) · [Build-blind review of the answers](ANSWER-REVIEW.md)
+
 The earlier fixed-sentence test measured Gemma decoding at 1.72 versus 4.14 output tokens/s. This study measures answer latency and correctness on additional workloads. [Earlier throughput experiment](https://github.com/0x89Parth/intel-mac-llm-bench/blob/944e7c7083cc854425ca4aaece1f2d15c9e975d0/README.md)
 
 ## Reproduce
