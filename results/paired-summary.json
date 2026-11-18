@@ -1,0 +1,1124 @@
+{
+  "schema_version": 1,
+  "models": {
+    "qwen": {
+      "run_id": "b03b83f2-b5c5-49e8-995c-14dfadf8820c",
+      "source_status": "complete",
+      "planned_rounds": 5,
+      "completed_rounds": 5,
+      "abandoned_attempts": 0,
+      "complete": true,
+      "tasks": {
+        "cold": {
+          "correctness": {
+            "stock": {
+              "retained": {
+                "correct": 0,
+                "graded": 5
+              },
+              "abandoned": {
+                "correct": 0,
+                "graded": 0
+              },
+              "all": {
+                "correct": 0,
+                "graded": 5
+              },
+              "missing_retained": 0
+            },
+            "rebuilt": {
+              "retained": {
+                "correct": 0,
+                "graded": 5
+              },
+              "abandoned": {
+                "correct": 0,
+                "graded": 0
+              },
+              "all": {
+                "correct": 0,
+                "graded": 5
+              },
+              "missing_retained": 0
+            }
+          },
+          "comparisons": {
+            "stock_vs_rebuilt": {
+              "left": "stock",
+              "right": "rebuilt",
+              "paired_rounds": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "excluded_rounds": {
+                "1": "incorrect stock, rebuilt",
+                "2": "incorrect stock, rebuilt",
+                "3": "incorrect stock, rebuilt",
+                "4": "incorrect stock, rebuilt",
+                "5": "incorrect stock, rebuilt"
+              },
+              "both_correct_rounds": [],
+              "metrics": {
+                "cold_to_first_content_s": {
+                  "stock": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "rebuilt": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement_pct": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "by_round": []
+                },
+                "cold_to_complete_s": {
+                  "stock": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "rebuilt": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement_pct": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "by_round": []
+                },
+                "decode_tps": {
+                  "stock": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "rebuilt": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement_pct": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "by_round": []
+                }
+              },
+              "output_tokens": {
+                "stock": {
+                  "n": 0,
+                  "median": null,
+                  "min": null,
+                  "max": null
+                },
+                "rebuilt": {
+                  "n": 0,
+                  "median": null,
+                  "min": null,
+                  "max": null
+                },
+                "same_count": 0,
+                "count_compared": 0,
+                "same_ids": 0,
+                "ids_compared": 0,
+                "same_text": 0
+              }
+            }
+          }
+        },
+        "explanation": {
+          "correctness": {
+            "stock": {
+              "retained": {
+                "correct": 0,
+                "graded": 5
+              },
+              "abandoned": {
+                "correct": 0,
+                "graded": 0
+              },
+              "all": {
+                "correct": 0,
+                "graded": 5
+              },
+              "missing_retained": 0
+            },
+            "rebuilt": {
+              "retained": {
+                "correct": 0,
+                "graded": 5
+              },
+              "abandoned": {
+                "correct": 0,
+                "graded": 0
+              },
+              "all": {
+                "correct": 0,
+                "graded": 5
+              },
+              "missing_retained": 0
+            }
+          },
+          "comparisons": {
+            "stock_vs_rebuilt": {
+              "left": "stock",
+              "right": "rebuilt",
+              "paired_rounds": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "excluded_rounds": {
+                "1": "incorrect stock, rebuilt",
+                "2": "incorrect stock, rebuilt",
+                "3": "incorrect stock, rebuilt",
+                "4": "incorrect stock, rebuilt",
+                "5": "incorrect stock, rebuilt"
+              },
+              "both_correct_rounds": [],
+              "metrics": {
+                "ttft_s": {
+                  "stock": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "rebuilt": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement_pct": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "by_round": []
+                },
+                "complete_s": {
+                  "stock": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "rebuilt": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement_pct": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "by_round": []
+                },
+                "decode_tps": {
+                  "stock": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "rebuilt": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "improvement_pct": {
+                    "n": 0,
+                    "median": null,
+                    "min": null,
+                    "max": null
+                  },
+                  "by_round": []
+                }
+              },
+              "output_tokens": {
+                "stock": {
+                  "n": 0,
+                  "median": null,
+                  "min": null,
+                  "max": null
+                },
+                "rebuilt": {
+                  "n": 0,
+                  "median": null,
+                  "min": null,
+                  "max": null
+                },
+                "same_count": 0,
+                "count_compared": 0,
+                "same_ids": 0,
+                "ids_compared": 0,
+                "same_text": 0
+              }
+            }
+          }
+        },
+        "long_prompt": {
+          "correctness": {
+            "stock": {
+              "retained": {
+                "correct": 5,
+                "graded": 5
+              },
+              "abandoned": {
+                "correct": 0,
+                "graded": 0
+              },
+              "all": {
+                "correct": 5,
+                "graded": 5
+              },
+              "missing_retained": 0
+            },
+            "rebuilt": {
+              "retained": {
+                "correct": 5,
+                "graded": 5
+              },
+              "abandoned": {
+                "correct": 0,
+                "graded": 0
+              },
+              "all": {
+                "correct": 5,
+                "graded": 5
+              },
+              "missing_retained": 0
+            }
+          },
+          "comparisons": {
+            "stock_vs_rebuilt": {
+              "left": "stock",
+              "right": "rebuilt",
+              "paired_rounds": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "excluded_rounds": {},
+              "both_correct_rounds": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "metrics": {
+                "ttft_s": {
+                  "stock": {
+                    "n": 5,
+                    "median": 1.6452959759999999,
+                    "min": 1.6344609460000044,
+                    "max": 1.674659762999994
+                  },
+                  "rebuilt": {
+                    "n": 5,
+                    "median": 1.642936038000002,
+                    "min": 1.6384142859999997,
+                    "max": 1.6575749540000402
+                  },
+                  "improvement": {
+                    "n": 5,
+                    "median": 0.0023599379999978964,
+                    "min": -0.020301083000077824,
+                    "max": 0.036105636999991475
+                  },
+                  "improvement_pct": {
+                    "n": 5,
+                    "median": 0.14343546902334955,
+                    "min": -1.2399320211272271,
+                    "max": 2.155998358455311
+                  },
+                  "by_round": [
+                    {
+                      "round": 1,
+                      "stock": 1.6452959759999999,
+                      "rebuilt": 1.642936038000002,
+                      "improvement": 0.0023599379999978964,
+                      "improvement_pct": 0.14343546902334955
+                    },
+                    {
+                      "round": 2,
+                      "stock": 1.6344609460000044,
+                      "rebuilt": 1.6539012710000094,
+                      "improvement": -0.019440325000005032,
+                      "improvement_pct": -1.1894028454813248
+                    },
+                    {
+                      "round": 3,
+                      "stock": 1.6476658820000125,
+                      "rebuilt": 1.6384142859999997,
+                      "improvement": 0.009251596000012796,
+                      "improvement_pct": 0.5614970911931966
+                    },
+                    {
+                      "round": 4,
+                      "stock": 1.674659762999994,
+                      "rebuilt": 1.6385541260000025,
+                      "improvement": 0.036105636999991475,
+                      "improvement_pct": 2.155998358455311
+                    },
+                    {
+                      "round": 5,
+                      "stock": 1.6372738709999624,
+                      "rebuilt": 1.6575749540000402,
+                      "improvement": -0.020301083000077824,
+                      "improvement_pct": -1.2399320211272271
+                    }
+                  ]
+                },
+                "complete_s": {
+                  "stock": {
+                    "n": 5,
+                    "median": 2.260366094999995,
+                    "min": 2.2569278680000053,
+                    "max": 2.2913682280000103
+                  },
+                  "rebuilt": {
+                    "n": 5,
+                    "median": 2.2643774129999983,
+                    "min": 2.2486251089999882,
+                    "max": 2.2798890540000087
+                  },
+                  "improvement": {
+                    "n": 5,
+                    "median": 0.0009064250000108132,
+                    "min": -0.02296118600000341,
+                    "max": 0.042743119000022034
+                  },
+                  "improvement_pct": {
+                    "n": 5,
+                    "median": 0.040100804998617505,
+                    "min": -1.0173646364848445,
+                    "max": 1.8653972101782081
+                  },
+                  "by_round": [
+                    {
+                      "round": 1,
+                      "stock": 2.2653380419999998,
+                      "rebuilt": 2.2643774129999983,
+                      "improvement": 0.0009606290000014894,
+                      "improvement_pct": 0.042405547524968
+                    },
+                    {
+                      "round": 2,
+                      "stock": 2.2569278680000053,
+                      "rebuilt": 2.2798890540000087,
+                      "improvement": -0.02296118600000341,
+                      "improvement_pct": -1.0173646364848445
+                    },
+                    {
+                      "round": 3,
+                      "stock": 2.260366094999995,
+                      "rebuilt": 2.259459669999984,
+                      "improvement": 0.0009064250000108132,
+                      "improvement_pct": 0.040100804998617505
+                    },
+                    {
+                      "round": 4,
+                      "stock": 2.2913682280000103,
+                      "rebuilt": 2.2486251089999882,
+                      "improvement": 0.042743119000022034,
+                      "improvement_pct": 1.8653972101782081
+                    },
+                    {
+                      "round": 5,
+                      "stock": 2.257978652999981,
+                      "rebuilt": 2.2747361770000225,
+                      "improvement": -0.016757524000041712,
+                      "improvement_pct": -0.7421471402210752
+                    }
+                  ]
+                },
+                "decode_tps": {
+                  "stock": {
+                    "n": 5,
+                    "median": 59.683387693608076,
+                    "min": 59.4412840602574,
+                    "max": 60.39810513188008
+                  },
+                  "rebuilt": {
+                    "n": 5,
+                    "median": 59.584198914601345,
+                    "min": 59.11940842243853,
+                    "max": 60.659317599071414
+                  },
+                  "improvement": {
+                    "n": 5,
+                    "median": -0.1367787925166013,
+                    "min": -0.8139062172787348,
+                    "max": 0.6652845731669643
+                  },
+                  "improvement_pct": {
+                    "n": 5,
+                    "median": -0.2291739758788021,
+                    "min": -1.347569125722669,
+                    "max": 1.1089179033516636
+                  },
+                  "by_round": [
+                    {
+                      "round": 1,
+                      "stock": 59.683387693608076,
+                      "rebuilt": 59.546608901091474,
+                      "improvement": -0.1367787925166013,
+                      "improvement_pct": -0.2291739758788021
+                    },
+                    {
+                      "round": 2,
+                      "stock": 59.4412840602574,
+                      "rebuilt": 59.11940842243853,
+                      "improvement": -0.3218756378188701,
+                      "improvement_pct": -0.5415018247125603
+                    },
+                    {
+                      "round": 3,
+                      "stock": 60.39810513188008,
+                      "rebuilt": 59.584198914601345,
+                      "improvement": -0.8139062172787348,
+                      "improvement_pct": -1.347569125722669
+                    },
+                    {
+                      "round": 4,
+                      "stock": 59.99403302590445,
+                      "rebuilt": 60.659317599071414,
+                      "improvement": 0.6652845731669643,
+                      "improvement_pct": 1.1089179033516636
+                    },
+                    {
+                      "round": 5,
+                      "stock": 59.61693701067787,
+                      "rebuilt": 59.95446701289021,
+                      "improvement": 0.33753000221233975,
+                      "improvement_pct": 0.5661646155217357
+                    }
+                  ]
+                }
+              },
+              "output_tokens": {
+                "stock": {
+                  "n": 5,
+                  "median": 38,
+                  "min": 38,
+                  "max": 38
+                },
+                "rebuilt": {
+                  "n": 5,
+                  "median": 38,
+                  "min": 38,
+                  "max": 38
+                },
+                "same_count": 5,
+                "count_compared": 5,
+                "same_ids": 5,
+                "ids_compared": 5,
+                "same_text": 5
+              }
+            }
+          }
+        },
+        "code_edit": {
+          "correctness": {
+            "stock": {
+              "retained": {
+                "correct": 5,
+                "graded": 5
+              },
+              "abandoned": {
+                "correct": 0,
+                "graded": 0
+              },
+              "all": {
+                "correct": 5,
+                "graded": 5
+              },
+              "missing_retained": 0
+            },
+            "rebuilt": {
+              "retained": {
+                "correct": 5,
+                "graded": 5
+              },
+              "abandoned": {
+                "correct": 0,
+                "graded": 0
+              },
+              "all": {
+                "correct": 5,
+                "graded": 5
+              },
+              "missing_retained": 0
+            }
+          },
+          "comparisons": {
+            "stock_vs_rebuilt": {
+              "left": "stock",
+              "right": "rebuilt",
+              "paired_rounds": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "excluded_rounds": {},
+              "both_correct_rounds": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "metrics": {
+                "ttft_s": {
+                  "stock": {
+                    "n": 5,
+                    "median": 0.49750999899999826,
+                    "min": 0.47927519300000654,
+                    "max": 0.5067807359999961
+                  },
+                  "rebuilt": {
+                    "n": 5,
+                    "median": 0.4993978860000112,
+                    "min": 0.49623987500000055,
+                    "max": 0.5049349120000102
+                  },
+                  "improvement": {
+                    "n": 5,
+                    "median": 0.00011972799998716255,
+                    "min": -0.025659719000003633,
+                    "max": 0.004015970999944329
+                  },
+                  "improvement_pct": {
+                    "n": 5,
+                    "median": 0.023968724351562692,
+                    "min": -5.353859197132134,
+                    "max": 0.7924474461366189
+                  },
+                  "by_round": [
+                    {
+                      "round": 1,
+                      "stock": 0.49750999899999826,
+                      "rebuilt": 0.49623987500000055,
+                      "improvement": 0.0012701239999977076,
+                      "improvement_pct": 0.25529617546394523
+                    },
+                    {
+                      "round": 2,
+                      "stock": 0.4995176139999984,
+                      "rebuilt": 0.4993978860000112,
+                      "improvement": 0.00011972799998716255,
+                      "improvement_pct": 0.023968724351562692
+                    },
+                    {
+                      "round": 3,
+                      "stock": 0.4935199770000054,
+                      "rebuilt": 0.4981911499999967,
+                      "improvement": -0.004671172999991313,
+                      "improvement_pct": -0.9465013003903715
+                    },
+                    {
+                      "round": 4,
+                      "stock": 0.47927519300000654,
+                      "rebuilt": 0.5049349120000102,
+                      "improvement": -0.025659719000003633,
+                      "improvement_pct": -5.353859197132134
+                    },
+                    {
+                      "round": 5,
+                      "stock": 0.5067807359999961,
+                      "rebuilt": 0.5027647650000517,
+                      "improvement": 0.004015970999944329,
+                      "improvement_pct": 0.7924474461366189
+                    }
+                  ]
+                },
+                "complete_s": {
+                  "stock": {
+                    "n": 5,
+                    "median": 0.9460620600000027,
+                    "min": 0.9238566289999994,
+                    "max": 0.9608371219999867
+                  },
+                  "rebuilt": {
+                    "n": 5,
+                    "median": 0.9519770229999835,
+                    "min": 0.9427227260000137,
+                    "max": 0.9590105519999952
+                  },
+                  "improvement": {
+                    "n": 5,
+                    "median": -0.0038411270000011655,
+                    "min": -0.03515392299999576,
+                    "max": 0.007820351999981767
+                  },
+                  "improvement_pct": {
+                    "n": 5,
+                    "median": -0.40606388503839813,
+                    "min": -3.805127537813638,
+                    "max": 0.822724627739786
+                  },
+                  "by_round": [
+                    {
+                      "round": 1,
+                      "stock": 0.9459415480000004,
+                      "rebuilt": 0.9497826750000016,
+                      "improvement": -0.0038411270000011655,
+                      "improvement_pct": -0.40606388503839813
+                    },
+                    {
+                      "round": 2,
+                      "stock": 0.9505430779999955,
+                      "rebuilt": 0.9427227260000137,
+                      "improvement": 0.007820351999981767,
+                      "improvement_pct": 0.822724627739786
+                    },
+                    {
+                      "round": 3,
+                      "stock": 0.9460620600000027,
+                      "rebuilt": 0.9519770229999835,
+                      "improvement": -0.005914962999980844,
+                      "improvement_pct": -0.6252193434308979
+                    },
+                    {
+                      "round": 4,
+                      "stock": 0.9238566289999994,
+                      "rebuilt": 0.9590105519999952,
+                      "improvement": -0.03515392299999576,
+                      "improvement_pct": -3.805127537813638
+                    },
+                    {
+                      "round": 5,
+                      "stock": 0.9608371219999867,
+                      "rebuilt": 0.957695708000017,
+                      "improvement": 0.0031414139999697,
+                      "improvement_pct": 0.32694552781545666
+                    }
+                  ]
+                },
+                "decode_tps": {
+                  "stock": {
+                    "n": 5,
+                    "median": 59.87227248536456,
+                    "min": 59.47699892280547,
+                    "max": 60.74486705873353
+                  },
+                  "rebuilt": {
+                    "n": 5,
+                    "median": 59.5083289620425,
+                    "min": 59.36153372614546,
+                    "max": 60.90903348643308
+                  },
+                  "improvement": {
+                    "n": 5,
+                    "median": -0.15965187348601972,
+                    "min": -1.2712744352212013,
+                    "max": 1.0367610010685198
+                  },
+                  "improvement_pct": {
+                    "n": 5,
+                    "median": -0.26756707911080696,
+                    "min": -2.092809642651815,
+                    "max": 1.7316212631179986
+                  },
+                  "by_round": [
+                    {
+                      "round": 1,
+                      "stock": 60.22040668847983,
+                      "rebuilt": 59.535884703246694,
+                      "improvement": -0.6845219852331326,
+                      "improvement_pct": -1.1366943912786323
+                    },
+                    {
+                      "round": 2,
+                      "stock": 59.87227248536456,
+                      "rebuilt": 60.90903348643308,
+                      "improvement": 1.0367610010685198,
+                      "improvement_pct": 1.7316212631179986
+                    },
+                    {
+                      "round": 3,
+                      "stock": 59.66798083552852,
+                      "rebuilt": 59.5083289620425,
+                      "improvement": -0.15965187348601972,
+                      "improvement_pct": -0.26756707911080696
+                    },
+                    {
+                      "round": 4,
+                      "stock": 60.74486705873353,
+                      "rebuilt": 59.47359262351233,
+                      "improvement": -1.2712744352212013,
+                      "improvement_pct": -2.092809642651815
+                    },
+                    {
+                      "round": 5,
+                      "stock": 59.47699892280547,
+                      "rebuilt": 59.36153372614546,
+                      "improvement": -0.11546519666001132,
+                      "improvement_pct": -0.19413420103773613
+                    }
+                  ]
+                }
+              },
+              "output_tokens": {
+                "stock": {
+                  "n": 5,
+                  "median": 28,
+                  "min": 28,
+                  "max": 28
+                },
+                "rebuilt": {
+                  "n": 5,
+                  "median": 28,
+                  "min": 28,
+                  "max": 28
+                },
+                "same_count": 5,
+                "count_compared": 5,
+                "same_ids": 5,
+                "ids_compared": 5,
+                "same_text": 5
+              }
+            }
+          }
+        },
+        "fixed_decode": {
+          "correctness": {
+            "stock": {
+              "retained": {
+                "correct": 5,
+                "graded": 5
+              },
+              "abandoned": {
+                "correct": 0,
+                "graded": 0
+              },
+              "all": {
+                "correct": 5,
+                "graded": 5
+              },
+              "missing_retained": 0
+            },
+            "rebuilt": {
+              "retained": {
+                "correct": 5,
+                "graded": 5
+              },
+              "abandoned": {
+                "correct": 0,
+                "graded": 0
+              },
+              "all": {
+                "correct": 5,
+                "graded": 5
+              },
+              "missing_retained": 0
+            }
+          },
+          "comparisons": {
+            "stock_vs_rebuilt": {
+              "left": "stock",
+              "right": "rebuilt",
+              "paired_rounds": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "excluded_rounds": {},
+              "both_correct_rounds": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "metrics": {
+                "ttft_s": {
+                  "stock": {
+                    "n": 5,
+                    "median": 0.1579044940000074,
+                    "min": 0.15654914899999994,
+                    "max": 0.162517978999972
+                  },
+                  "rebuilt": {
+                    "n": 5,
+                    "median": 0.15780856000000654,
+                    "min": 0.15633665600000768,
+                    "max": 0.16542230700000005
+                  },
+                  "improvement": {
+                    "n": 5,
+                    "median": -0.0012404309999993757,
+                    "min": -0.007517812999992657,
+                    "max": 0.006181322999964323
+                  },
+                  "improvement_pct": {
+                    "n": 5,
+                    "median": -0.7706337911884005,
+                    "min": -4.760987359860895,
+                    "max": 3.803470260952105
+                  },
+                  "by_round": [
+                    {
+                      "round": 1,
+                      "stock": 0.1609624459999992,
+                      "rebuilt": 0.16220287699999858,
+                      "improvement": -0.0012404309999993757,
+                      "improvement_pct": -0.7706337911884005
+                    },
+                    {
+                      "round": 2,
+                      "stock": 0.15656032799999764,
+                      "rebuilt": 0.1573987649999964,
+                      "improvement": -0.0008384369999987484,
+                      "improvement_pct": -0.5355360522742141
+                    },
+                    {
+                      "round": 3,
+                      "stock": 0.15654914899999994,
+                      "rebuilt": 0.15780856000000654,
+                      "improvement": -0.001259411000006594,
+                      "improvement_pct": -0.8044828145355133
+                    },
+                    {
+                      "round": 4,
+                      "stock": 0.1579044940000074,
+                      "rebuilt": 0.16542230700000005,
+                      "improvement": -0.007517812999992657,
+                      "improvement_pct": -4.760987359860895
+                    },
+                    {
+                      "round": 5,
+                      "stock": 0.162517978999972,
+                      "rebuilt": 0.15633665600000768,
+                      "improvement": 0.006181322999964323,
+                      "improvement_pct": 3.803470260952105
+                    }
+                  ]
+                },
+                "complete_s": {
+                  "stock": {
+                    "n": 5,
+                    "median": 2.5637222069999837,
+                    "min": 2.5568048890000057,
+                    "max": 2.5765267419999986
+                  },
+                  "rebuilt": {
+                    "n": 5,
+                    "median": 2.5624817530000144,
+                    "min": 2.5562277459999905,
+                    "max": 2.568924454000012
+                  },
+                  "improvement": {
+                    "n": 5,
+                    "median": -0.0017709050000007664,
+                    "min": -0.005202247000028137,
+                    "max": 0.020298996000008174
+                  },
+                  "improvement_pct": {
+                    "n": 5,
+                    "median": -0.06915677345546033,
+                    "min": -0.20291773366958124,
+                    "max": 0.7878434044216951
+                  },
+                  "by_round": [
+                    {
+                      "round": 1,
+                      "stock": 2.5712430699999977,
+                      "rebuilt": 2.565808388999997,
+                      "improvement": 0.005434681000000552,
+                      "improvement_pct": 0.21136395323373908
+                    },
+                    {
+                      "round": 2,
+                      "stock": 2.5568048890000057,
+                      "rebuilt": 2.558662548000001,
+                      "improvement": -0.0018576589999952375,
+                      "improvement_pct": -0.07265548528897675
+                    },
+                    {
+                      "round": 3,
+                      "stock": 2.5607108480000136,
+                      "rebuilt": 2.5624817530000144,
+                      "improvement": -0.0017709050000007664,
+                      "improvement_pct": -0.06915677345546033
+                    },
+                    {
+                      "round": 4,
+                      "stock": 2.5637222069999837,
+                      "rebuilt": 2.568924454000012,
+                      "improvement": -0.005202247000028137,
+                      "improvement_pct": -0.20291773366958124
+                    },
+                    {
+                      "round": 5,
+                      "stock": 2.5765267419999986,
+                      "rebuilt": 2.5562277459999905,
+                      "improvement": 0.020298996000008174,
+                      "improvement_pct": 0.7878434044216951
+                    }
+                  ]
+                },
+                "decode_tps": {
+                  "stock": {
+                    "n": 5,
+                    "median": 59.44136753387327,
+                    "min": 59.239202930310675,
+                    "max": 59.57792167211479
+                  },
+                  "rebuilt": {
+                    "n": 5,
+                    "median": 59.499439124168255,
+                    "min": 59.46957299598976,
+                    "max": 59.58800106008304
+                  },
+                  "improvement": {
+                    "n": 5,
+                    "median": 0.05807159029498621,
+                    "min": -0.024117100215022447,
+                    "max": 0.34879812977236213
+                  },
+                  "improvement_pct": {
+                    "n": 5,
+                    "median": 0.09769558256191452,
+                    "min": -0.04047992870202849,
+                    "max": 0.5887961223629058
+                  },
+                  "by_round": [
+                    {
+                      "round": 1,
+                      "stock": 59.32984656388912,
+                      "rebuilt": 59.49683980247049,
+                      "improvement": 0.1669932385813695,
+                      "improvement_pct": 0.2814658190655246
+                    },
+                    {
+                      "round": 2,
+                      "stock": 59.57792167211479,
+                      "rebuilt": 59.55380457189977,
+                      "improvement": -0.024117100215022447,
+                      "improvement_pct": -0.04047992870202849
+                    },
+                    {
+                      "round": 3,
+                      "stock": 59.48186718156611,
+                      "rebuilt": 59.46957299598976,
+                      "improvement": -0.012294185576351424,
+                      "improvement_pct": -0.020668795649645456
+                    },
+                    {
+                      "round": 4,
+                      "stock": 59.44136753387327,
+                      "rebuilt": 59.499439124168255,
+                      "improvement": 0.05807159029498621,
+                      "improvement_pct": 0.09769558256191452
+                    },
+                    {
+                      "round": 5,
+                      "stock": 59.239202930310675,
+                      "rebuilt": 59.58800106008304,
+                      "improvement": 0.34879812977236213,
+                      "improvement_pct": 0.5887961223629058
+                    }
+                  ]
+                }
+              },
+              "output_tokens": {
+                "stock": {
+                  "n": 5,
+                  "median": 144,
+                  "min": 144,
+                  "max": 144
+                },
+                "rebuilt": {
+                  "n": 5,
+                  "median": 144,
+                  "min": 144,
+                  "max": 144
+                },
+                "same_count": 5,
+                "count_compared": 5,
+                "same_ids": 5,
+                "ids_compared": 5,
+                "same_text": 5
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
