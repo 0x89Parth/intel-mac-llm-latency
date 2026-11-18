@@ -21,6 +21,27 @@
     "reason": "It gives 7 as the default but omits both the absence of insertion and the subsequent KeyError. It exceeds two sentences and ends mid-sentence."
   },
   {
+    "id": "acf7f336bd02dae357ca2d2fdb322657e65b8e8e27fbfe963a1c599b45eaecc3",
+    "task": "explanation",
+    "semantic_correct": true,
+    "instruction_pass": true,
+    "reason": "The two sentences give the default 7, explain that the dictionary stays empty, and identify KeyError on lookup."
+  },
+  {
+    "id": "bff16ba1a0769cd6c933aa8d72e83a25d35eebeb53b9b9f8514afc37347886c6",
+    "task": "code_edit",
+    "semantic_correct": true,
+    "instruction_pass": false,
+    "reason": "The signature is intact and both return paths give the clamped difference. Markdown fencing adds text outside the complete function."
+  },
+  {
+    "id": "f3998e0394159e74674d109f5d7ff9f818557c40f7951083676c43876ee98756",
+    "task": "cold",
+    "semantic_correct": true,
+    "instruction_pass": true,
+    "reason": "Five slots are free, and the response is the single integer 5."
+  },
+  {
     "id": "f6f164c14255bd2602d6cb3a4fe5de4ed261243ce4b255ca4d8fd9df2581b4a8",
     "task": "long_prompt",
     "semantic_correct": true,
