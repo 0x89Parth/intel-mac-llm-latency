@@ -27,6 +27,8 @@ The public ToshLLM version is v0.88.0 and its underlying llama.cpp revision is `
 - Keep the prewritten grader results and independently review distinct free-text responses with build names hidden. Report disagreements and whether they change the interpretation.
 - Profile a disposable Gemma process and screen nearby thread and GPU-layer settings on separate tuning prompts. A selected configuration must face different prompts before claiming a tuning gain. Keep prompt lookup disabled for the primary rebuild comparison.
 
+The initial tuning rule required all three tuning answers to pass, including the reference run at three threads and three layers. That reference missed the directory-routing question. At that point, before any held-out run, we specified a fallback to nominate an exploratory third arm. Prioritize the number of correct tuning answers. Break ties using the geometric mean of the latency ratios on at least two tasks passed by the reference and every tied configuration. If this comparison is unavailable, retain the original profile. A fallback nomination leaves the primary stock versus rebuild comparison at the original settings.
+
 ## Machine
 
 2019 MacBook Pro, Intel Core i9-9880H, 16 GB RAM, Radeon Pro 560X with 4 GB VRAM, macOS Ventura 13.6.5. One machine limits conclusions about other systems.

@@ -26,7 +26,7 @@ def main():
     selection = json.loads(args.tuning_report.read_text())
     if "selected_profile" not in selection:
         parser.error("tuning report is incomplete")
-    profile = selection["selected_profile"]
+    profile = selection["selected_profile"] or selection.get("exploratory_profile")
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     destination = (args.output_dir or PROJECT / "runs" / stamp).resolve()
     destination.mkdir(parents=True, exist_ok=True)
