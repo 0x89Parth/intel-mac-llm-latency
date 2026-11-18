@@ -41,6 +41,25 @@ def observed(pairs, arm, task):
     return {"correct": sum(grades), "graded": len(grades)}
 
 
+def unfiltered(pairs, arms):
+    """Describe each actual server launch and completed reply, regardless of its grade."""
+    launches = {}
+    replies = {}
+    for arm in arms:
+        runs = [pair["arms"][arm] for pair in pairs if arm in pair.get("arms", {})]
+        launches[arm] = distribution([run["startup_s"] for run in runs if good_number(run.get("startup_s"))])
+        replies[arm] = {}
+        for task in TASKS:
+            samples = [run["samples"][task] for run in runs if task in run.get("samples", {})]
+            samples = [s for s in samples if type(s.get("correct")) is bool]
+            keys = COLD_METRICS if task == "cold" else WARM_METRICS
+            replies[arm][task] = {
+                "graded": len(samples), "correct": sum(s["correct"] for s in samples),
+                "metrics": {key: distribution([s[key] for s in samples if good_number(s.get(key))]) for key in keys},
+            }
+    return {"startup_s": launches, "replies": replies}
+
+
 def comparison(pairs, task, left, right):
     keys = COLD_METRICS if task == "cold" else WARM_METRICS
     output = {"left": left, "right": right, "paired_rounds": [], "excluded_rounds": {},
@@ -105,9 +124,11 @@ def summarize(data):
     model = {"run_id": data["run_id"], "source_status": data.get("status", "incomplete"),
              "planned_rounds": rounds, "completed_rounds": complete, "abandoned_attempts": len(abandoned),
              "complete": data.get("status") == "complete" and complete == rounds, "tasks": {}}
+    arms = list(dict.fromkeys(a for pair in comparisons for a in pair))
+    model["all_observed"] = unfiltered(pairs + abandoned, arms)
     for task in TASKS:
         grades = {}
-        for arm in dict.fromkeys(a for pair in comparisons for a in pair):
+        for arm in arms:
             retained = observed(pairs, arm, task)
             additional = observed(abandoned, arm, task)
             all_trials = {key: retained[key] + additional[key] for key in retained}
@@ -144,7 +165,7 @@ def write_report(summary, chart_present):
         lines += ["![Median warm response times for matched correct answers on each MacBook workload](results/warm-latency.png)", ""]
     lines += [
         "The primary comparison uses the released Intel ToshLLM engine and the local rebuild on the same laptop. "
-        "Each latency estimate uses independent rounds in which both engines passed the frozen correctness checks "
+        "The paired latency estimates use independent rounds in which both engines passed the frozen correctness checks "
         "and received the same formatted prompt. A dash means the estimate is unavailable.",
         "",
         "A positive saving means a shorter wait. For each qualifying round, the analysis divides the time saved by "
@@ -193,6 +214,25 @@ def write_report(summary, chart_present):
                              f"{token_range(tok[left])} / {token_range(tok[right])} | "
                              f"{tok['same_count']}/{tok['count_compared']} | {tok['same_ids']}/{tok['ids_compared']} |")
             lines += [""]
+        observed_data = info["all_observed"]
+        lines += ["### Observed startup and reply times, including incorrect answers", "",
+                  "Startup runs from process launch until the server reports ready.", "",
+                  "| Build | Ready launches | Median startup (s) |", "|---|---:|---:|"]
+        for arm, startup in observed_data["startup_s"].items():
+            lines.append(f"| {ARM_NAMES[arm]} | {startup['n']} | {dash(startup['median'])} |")
+        lines += ["", "The medians below use every completed reply from each build, including replies from unfinished "
+                  "or abandoned rounds. Correct/graded gives the number of those replies that passed. For the first reply, "
+                  "both times start at process launch. For warm workloads, both start at the client request.", "",
+                  "| Task | Build | Correct/graded | Median first text (s) | Median full reply (s) | Median decode (tokens/s) |",
+                  "|---|---|---:|---:|---:|---:|"]
+        for task, desc in TASKS.items():
+            first, full, decode = COLD_METRICS if task == "cold" else WARM_METRICS
+            for arm, observations in observed_data["replies"].items():
+                obs = observations[task]
+                m = obs["metrics"]
+                lines.append(f"| {desc} | {ARM_NAMES[arm]} | {obs['correct']}/{obs['graded']} | "
+                             f"{dash(m[first]['median'])} | {dash(m[full]['median'])} | {dash(m[decode]['median'])} |")
+        lines += [""]
     lines += ["## Timing and interpretation", "",
               "For the first answer after launch, the clock starts when the benchmark launches a new server process. "
               "The operating system keeps its file cache. Warm times start at the client request, before formatting the model prompt. "
