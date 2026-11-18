@@ -2,7 +2,6 @@
 """Profile a stock Intel Gemma decoder, then screen CPU threads and Metal layer counts."""
 import argparse
 from datetime import datetime, timezone
-import hashlib
 import json
 import math
 from pathlib import Path
@@ -147,13 +146,56 @@ def block(engine, model, threads, layers, profiling=False):
     return row
 
 
+def exploratory_profile(blocks):
+    """Rank equally accurate profiles on exactly the same successful tuning questions."""
+    successful_tasks = {
+        (b["threads"], b["gpu_layers"]): {t["task"]: t["request_seconds"] for t in b["trials"] if t["correct"]}
+        for b in blocks if len(b["trials"]) == len(TASKS) and "error" not in b
+    }
+    info = {
+        "basis": "Fallback specified after observing the reference routing failure and before the remaining results. Maximize number of tuning tasks correct; compare geometric mean of wall-time ratios only on tasks passed by all equally accurate candidates and the reference; require at least two shared tasks.",
+        "reference": [3, 3], "selected": None, "shared_tasks": [], "ranking": [],
+        "tasks_passed": [
+            {"threads": key[0], "gpu_layers": key[1], "passed": sorted(scores)}
+            for key, scores in successful_tasks.items()
+        ],
+    }
+    reference = successful_tasks.get((3, 3), {})
+    if not reference:
+        return info
+    maximum = max(map(len, successful_tasks.values()))
+    eligible = [key for key, scores in successful_tasks.items() if len(scores) == maximum]
+    common = sorted(set(reference).intersection(*(set(successful_tasks[key]) for key in eligible)))
+    info["shared_tasks"] = common
+    if len(common) < 2:
+        return info
+    for key in eligible:
+        ratios = [successful_tasks[key][task] / reference[task] for task in common]
+        info["ranking"].append({"threads": key[0], "gpu_layers": key[1],
+                                "wall_ratio_vs_reference": math.exp(sum(math.log(x) for x in ratios) / len(ratios))})
+    info["ranking"].sort(key=lambda v: v["wall_ratio_vs_reference"])
+    info["selected"] = info["ranking"][0]
+    return info
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", type=Path, default=DEFAULT_MODEL)
     parser.add_argument("--stock", type=Path, default=DEFAULT_ENGINE)
     parser.add_argument("--candidate", type=Path, default=DEFAULT_AVX2_ENGINE)
     parser.add_argument("--output", type=Path, default=PROJECT/"results/gemma-cpu-tuning.json")
+    parser.add_argument("--summarize-existing", action="store_true", help="add the fallback ranking to a completed sweep")
     opt = parser.parse_args()
+    if opt.summarize_existing:
+        out = json.loads(opt.output.read_text())
+        if len(out["blocks"]) != len(out["profiles"]) or "selected_profile" not in out:
+            parser.error("the original screening run is incomplete")
+        if out["selected_profile"] is None:
+            out["exploratory_profile"] = exploratory_profile(out["blocks"])
+            stage = opt.output.with_suffix(".tmp")
+            stage.write_text(json.dumps(out, indent=2) + "\n")
+            stage.replace(opt.output)
+        return
     model = opt.model.expanduser().resolve(strict=True)
     stock, candidate = [p.expanduser().resolve(strict=True) for p in (opt.stock,opt.candidate)]
     out = {"started_utc":datetime.now(timezone.utc).isoformat(), "model":model.name, "model_bytes":model.stat().st_size,
@@ -183,6 +225,8 @@ def main():
                 eligible.append(row)
     best = min(eligible,key=lambda r:r["wall_ratio_vs_reference"]) if eligible else None
     out["selected_profile"] = {k: best[k] for k in ("threads","gpu_layers","wall_ratio_vs_reference")} if best else None
+    if best is None:
+        out["exploratory_profile"] = exploratory_profile(out["blocks"])
     save()
     print("selected",out["selected_profile"],flush=True)
 

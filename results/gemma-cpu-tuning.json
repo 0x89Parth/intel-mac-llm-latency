@@ -1,0 +1,1131 @@
+{
+  "started_utc": "2026-11-18T22:48:13.326539+00:00",
+  "model": "Huihui-gemma-4-26B-A4B-it-qat-q4_0-unquantized-abliterated-Q4_K.gguf",
+  "model_bytes": 16796015648,
+  "engine_sha256": {
+    "stock": "c3c287023914f8e7612c669431ccfa80717a4e0c6fe322aa462ceaa4de1e0c86",
+    "candidate": "690aac3a10b2ef64eef094a77d94e10d7559ef37074a16c5f418d120d1bfa806"
+  },
+  "tasks": [
+    [
+      "shipment",
+      "A carton holds 6 mugs. A shop receives 8 full cartons and gives away 5 mugs. How many mugs remain? Reply with the integer only.",
+      "43"
+    ],
+    [
+      "routing",
+      "The directory lists Amber as printer support, Violet as payroll, and Cedar as facilities. Which team handles a missing payslip? Reply with the team name only.",
+      "Violet"
+    ],
+    [
+      "sorting",
+      "Sort 12, 3, 19, 7 from smallest to largest. Return just a JSON array of the four integers.",
+      [
+        3,
+        7,
+        12,
+        19
+      ]
+    ]
+  ],
+  "profiles": [
+    [
+      3,
+      3
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      3,
+      2
+    ]
+  ],
+  "sampling": {
+    "temperature": 0,
+    "seed": 42,
+    "n_predict": 24,
+    "cache_prompt": false
+  },
+  "selection_rule": "Require all three correct. Minimize geometric mean of matched wall-time ratios against 3 threads and 3 layers. Single-pass exploratory tuning.",
+  "blocks": [
+    {
+      "threads": 3,
+      "gpu_layers": 3,
+      "before": {
+        "thermal": {
+          "cpu_speed_limit_pct": 97,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 2048.00M  used = 1384.50M  free = 663.50M  (encrypted)",
+          "swapins": 11242692,
+          "swapouts": 12946102
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "trials": [
+        {
+          "task": "shipment",
+          "request_seconds": 9.622674087999997,
+          "answer": "43",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 9144.03,
+            "prompt_per_token_ms": 203.20066666666668,
+            "prompt_per_second": 4.921243696707031,
+            "predicted_n": 3,
+            "predicted_ms": 474.259,
+            "predicted_per_token_ms": 237.1295,
+            "predicted_per_second": 4.217104999588832
+          }
+        },
+        {
+          "task": "routing",
+          "request_seconds": 6.860859879000003,
+          "answer": "Payroll",
+          "correct": false,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 6654.978,
+            "prompt_per_token_ms": 147.8884,
+            "prompt_per_second": 6.761855561355724,
+            "predicted_n": 2,
+            "predicted_ms": 201.406,
+            "predicted_per_token_ms": 201.406,
+            "predicted_per_second": 4.96509537948224
+          }
+        },
+        {
+          "task": "sorting",
+          "request_seconds": 9.343448028999987,
+          "answer": "[3, 7, 12, 19]",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 42,
+            "prompt_ms": 5763.206,
+            "prompt_per_token_ms": 137.21919047619048,
+            "prompt_per_second": 7.287610402959742,
+            "predicted_n": 15,
+            "predicted_ms": 3575.974,
+            "predicted_per_token_ms": 255.4267142857143,
+            "predicted_per_second": 3.915017279208406
+          }
+        }
+      ],
+      "engine_flags": [
+        "--alias",
+        "gemma-tune",
+        "-dev",
+        "MTL0",
+        "--fit",
+        "off",
+        "--load-mode",
+        "mmap",
+        "-c",
+        "1024",
+        "-b",
+        "16",
+        "-ub",
+        "16",
+        "-np",
+        "1",
+        "--cache-ram",
+        "0",
+        "--no-warmup",
+        "--no-mmproj",
+        "--reasoning",
+        "off",
+        "--no-repack",
+        "--offline",
+        "--no-ui",
+        "--host",
+        "127.0.0.1",
+        "-lv",
+        "4",
+        "-ngl",
+        "3",
+        "-t",
+        "3",
+        "-tb",
+        "3"
+      ],
+      "startup_seconds": 9.366885149999995,
+      "after": {
+        "thermal": {
+          "cpu_speed_limit_pct": 83,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 2048.00M  used = 1437.75M  free = 610.25M  (encrypted)",
+          "swapins": 11245636,
+          "swapouts": 12967904
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "placement": [
+        "0.00.721.060 I load_tensors: offloaded 3/31 layers to GPU"
+      ],
+      "metal_buffers": [
+        "0.00.721.076 I load_tensors: MTL0_Private model buffer size =  1710.28 MiB",
+        "0.07.918.112 I llama_kv_cache: MTL0_Private KV buffer size =     4.00 MiB",
+        "0.08.023.544 I llama_kv_cache: MTL0_Private KV buffer size =     8.00 MiB",
+        "0.08.038.153 I sched_reserve: MTL0_Private compute buffer size =    22.53 MiB"
+      ]
+    },
+    {
+      "threads": 4,
+      "gpu_layers": 2,
+      "before": {
+        "thermal": {
+          "cpu_speed_limit_pct": 85,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 2048.00M  used = 1437.75M  free = 610.25M  (encrypted)",
+          "swapins": 11245764,
+          "swapouts": 12967904
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "trials": [
+        {
+          "task": "shipment",
+          "request_seconds": 7.1630449239999905,
+          "answer": "43",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 6823.571,
+            "prompt_per_token_ms": 151.6349111111111,
+            "prompt_per_second": 6.594787392114774,
+            "predicted_n": 3,
+            "predicted_ms": 331.278,
+            "predicted_per_token_ms": 165.639,
+            "predicted_per_second": 6.037225532634222
+          }
+        },
+        {
+          "task": "routing",
+          "request_seconds": 6.099105441000006,
+          "answer": "Payroll",
+          "correct": false,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 5877.181,
+            "prompt_per_token_ms": 130.60402222222223,
+            "prompt_per_second": 7.656732028501419,
+            "predicted_n": 2,
+            "predicted_ms": 216.056,
+            "predicted_per_token_ms": 216.056,
+            "predicted_per_second": 4.6284296663827895
+          }
+        },
+        {
+          "task": "sorting",
+          "request_seconds": 9.132531654000005,
+          "answer": "[3, 7, 12, 19]",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 42,
+            "prompt_ms": 5382.253,
+            "prompt_per_token_ms": 128.14888095238095,
+            "prompt_per_second": 7.803423584881648,
+            "predicted_n": 15,
+            "predicted_ms": 3743.913,
+            "predicted_per_token_ms": 267.42235714285715,
+            "predicted_per_second": 3.739403132498004
+          }
+        }
+      ],
+      "engine_flags": [
+        "--alias",
+        "gemma-tune",
+        "-dev",
+        "MTL0",
+        "--fit",
+        "off",
+        "--load-mode",
+        "mmap",
+        "-c",
+        "1024",
+        "-b",
+        "16",
+        "-ub",
+        "16",
+        "-np",
+        "1",
+        "--cache-ram",
+        "0",
+        "--no-warmup",
+        "--no-mmproj",
+        "--reasoning",
+        "off",
+        "--no-repack",
+        "--offline",
+        "--no-ui",
+        "--host",
+        "127.0.0.1",
+        "-lv",
+        "4",
+        "-ngl",
+        "2",
+        "-t",
+        "4",
+        "-tb",
+        "4"
+      ],
+      "startup_seconds": 7.563471367000005,
+      "after": {
+        "thermal": {
+          "cpu_speed_limit_pct": 58,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 2048.00M  used = 1660.00M  free = 388.00M  (encrypted)",
+          "swapins": 11288285,
+          "swapouts": 13073695
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "placement": [
+        "0.00.799.242 I load_tensors: offloaded 2/31 layers to GPU"
+      ],
+      "metal_buffers": [
+        "0.00.799.260 I load_tensors: MTL0_Private model buffer size =  1147.06 MiB",
+        "0.05.922.797 I llama_kv_cache: MTL0_Private KV buffer size =     4.00 MiB",
+        "0.06.088.525 I sched_reserve: MTL0_Private compute buffer size =    22.50 MiB"
+      ]
+    },
+    {
+      "threads": 2,
+      "gpu_layers": 3,
+      "before": {
+        "thermal": {
+          "cpu_speed_limit_pct": 58,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 2048.00M  used = 1660.00M  free = 388.00M  (encrypted)",
+          "swapins": 11288413,
+          "swapouts": 13073695
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "trials": [
+        {
+          "task": "shipment",
+          "request_seconds": 9.786707127999989,
+          "answer": "43",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 9352.159,
+            "prompt_per_token_ms": 207.82575555555556,
+            "prompt_per_second": 4.811723153979739,
+            "predicted_n": 3,
+            "predicted_ms": 429.687,
+            "predicted_per_token_ms": 214.8435,
+            "predicted_per_second": 4.654550870750104
+          }
+        },
+        {
+          "task": "routing",
+          "request_seconds": 8.417143953999982,
+          "answer": "Payroll",
+          "correct": false,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 8194.756,
+            "prompt_per_token_ms": 182.10568888888886,
+            "prompt_per_second": 5.491316642008622,
+            "predicted_n": 2,
+            "predicted_ms": 218.279,
+            "predicted_per_token_ms": 218.279,
+            "predicted_per_second": 4.581292749187966
+          }
+        },
+        {
+          "task": "sorting",
+          "request_seconds": 12.291146295999994,
+          "answer": "[3, 7, 12, 19]",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 42,
+            "prompt_ms": 7889.834,
+            "prompt_per_token_ms": 187.85319047619046,
+            "prompt_per_second": 5.323305914927995,
+            "predicted_n": 15,
+            "predicted_ms": 4396.337,
+            "predicted_per_token_ms": 314.02407142857146,
+            "predicted_per_second": 3.1844692524708633
+          }
+        }
+      ],
+      "engine_flags": [
+        "--alias",
+        "gemma-tune",
+        "-dev",
+        "MTL0",
+        "--fit",
+        "off",
+        "--load-mode",
+        "mmap",
+        "-c",
+        "1024",
+        "-b",
+        "16",
+        "-ub",
+        "16",
+        "-np",
+        "1",
+        "--cache-ram",
+        "0",
+        "--no-warmup",
+        "--no-mmproj",
+        "--reasoning",
+        "off",
+        "--no-repack",
+        "--offline",
+        "--no-ui",
+        "--host",
+        "127.0.0.1",
+        "-lv",
+        "4",
+        "-ngl",
+        "3",
+        "-t",
+        "2",
+        "-tb",
+        "2"
+      ],
+      "startup_seconds": 9.69533518199998,
+      "after": {
+        "thermal": {
+          "cpu_speed_limit_pct": 85,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 2048.00M  used = 1743.75M  free = 304.25M  (encrypted)",
+          "swapins": 11305592,
+          "swapouts": 13103246
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "placement": [
+        "0.00.890.767 I load_tensors: offloaded 3/31 layers to GPU"
+      ],
+      "metal_buffers": [
+        "0.00.890.789 I load_tensors: MTL0_Private model buffer size =  1710.28 MiB",
+        "0.07.432.208 I llama_kv_cache: MTL0_Private KV buffer size =     4.00 MiB",
+        "0.07.556.295 I llama_kv_cache: MTL0_Private KV buffer size =     8.00 MiB",
+        "0.07.571.507 I sched_reserve: MTL0_Private compute buffer size =    22.53 MiB"
+      ]
+    },
+    {
+      "threads": 3,
+      "gpu_layers": 4,
+      "before": {
+        "thermal": {
+          "cpu_speed_limit_pct": 85,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 2048.00M  used = 1743.75M  free = 304.25M  (encrypted)",
+          "swapins": 11305656,
+          "swapouts": 13103246
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "trials": [
+        {
+          "task": "shipment",
+          "request_seconds": 9.57235500500002,
+          "answer": "43",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 9275.72,
+            "prompt_per_token_ms": 206.1271111111111,
+            "prompt_per_second": 4.851375418835412,
+            "predicted_n": 3,
+            "predicted_ms": 291.633,
+            "predicted_per_token_ms": 145.8165,
+            "predicted_per_second": 6.857934458720378
+          }
+        },
+        {
+          "task": "routing",
+          "request_seconds": 5.8993820270000015,
+          "answer": "Payroll",
+          "correct": false,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 5747.622,
+            "prompt_per_token_ms": 127.72493333333334,
+            "prompt_per_second": 7.829324892973129,
+            "predicted_n": 2,
+            "predicted_ms": 147.3,
+            "predicted_per_token_ms": 147.3,
+            "predicted_per_second": 6.78886625933469
+          }
+        },
+        {
+          "task": "sorting",
+          "request_seconds": 8.506093891999996,
+          "answer": "[3, 7, 12, 19]",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 42,
+            "prompt_ms": 5057.36,
+            "prompt_per_token_ms": 120.41333333333333,
+            "prompt_per_second": 8.304728158564943,
+            "predicted_n": 15,
+            "predicted_ms": 3445.226,
+            "predicted_per_token_ms": 246.08757142857144,
+            "predicted_per_second": 4.06359408642568
+          }
+        }
+      ],
+      "engine_flags": [
+        "--alias",
+        "gemma-tune",
+        "-dev",
+        "MTL0",
+        "--fit",
+        "off",
+        "--load-mode",
+        "mmap",
+        "-c",
+        "1024",
+        "-b",
+        "16",
+        "-ub",
+        "16",
+        "-np",
+        "1",
+        "--cache-ram",
+        "0",
+        "--no-warmup",
+        "--no-mmproj",
+        "--reasoning",
+        "off",
+        "--no-repack",
+        "--offline",
+        "--no-ui",
+        "--host",
+        "127.0.0.1",
+        "-lv",
+        "4",
+        "-ngl",
+        "4",
+        "-t",
+        "3",
+        "-tb",
+        "3"
+      ],
+      "startup_seconds": 11.789227363000009,
+      "after": {
+        "thermal": {
+          "cpu_speed_limit_pct": 72,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 3072.00M  used = 1900.25M  free = 1171.75M  (encrypted)",
+          "swapins": 11333946,
+          "swapouts": 13175930
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "placement": [
+        "0.00.789.406 I load_tensors: offloaded 4/31 layers to GPU"
+      ],
+      "metal_buffers": [
+        "0.00.789.422 I load_tensors: MTL0_Private model buffer size =  2273.51 MiB",
+        "0.09.421.701 I llama_kv_cache: MTL0_Private KV buffer size =     4.00 MiB",
+        "0.09.513.837 I llama_kv_cache: MTL0_Private KV buffer size =    16.00 MiB",
+        "0.09.528.717 I sched_reserve: MTL0_Private compute buffer size =    22.53 MiB"
+      ]
+    },
+    {
+      "threads": 4,
+      "gpu_layers": 3,
+      "before": {
+        "thermal": {
+          "cpu_speed_limit_pct": 72,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 3072.00M  used = 1900.25M  free = 1171.75M  (encrypted)",
+          "swapins": 11334010,
+          "swapouts": 13175930
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "trials": [
+        {
+          "task": "shipment",
+          "request_seconds": 8.212924724000004,
+          "answer": "43",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 7899.358,
+            "prompt_per_token_ms": 175.5412888888889,
+            "prompt_per_second": 5.696665475852594,
+            "predicted_n": 3,
+            "predicted_ms": 309.296,
+            "predicted_per_token_ms": 154.648,
+            "predicted_per_second": 6.46629765661373
+          }
+        },
+        {
+          "task": "routing",
+          "request_seconds": 5.430045567999997,
+          "answer": "Payroll",
+          "correct": false,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 5266.937,
+            "prompt_per_token_ms": 117.04304444444445,
+            "prompt_per_second": 8.543865248435667,
+            "predicted_n": 2,
+            "predicted_ms": 158.865,
+            "predicted_per_token_ms": 158.865,
+            "predicted_per_second": 6.294652692537689
+          }
+        },
+        {
+          "task": "sorting",
+          "request_seconds": 8.000088951999999,
+          "answer": "[3, 7, 12, 19]",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 42,
+            "prompt_ms": 4823.491,
+            "prompt_per_token_ms": 114.84502380952381,
+            "prompt_per_second": 8.707386413699123,
+            "predicted_n": 15,
+            "predicted_ms": 3173.49,
+            "predicted_per_token_ms": 226.67785714285714,
+            "predicted_per_second": 4.411546908923615
+          }
+        }
+      ],
+      "engine_flags": [
+        "--alias",
+        "gemma-tune",
+        "-dev",
+        "MTL0",
+        "--fit",
+        "off",
+        "--load-mode",
+        "mmap",
+        "-c",
+        "1024",
+        "-b",
+        "16",
+        "-ub",
+        "16",
+        "-np",
+        "1",
+        "--cache-ram",
+        "0",
+        "--no-warmup",
+        "--no-mmproj",
+        "--reasoning",
+        "off",
+        "--no-repack",
+        "--offline",
+        "--no-ui",
+        "--host",
+        "127.0.0.1",
+        "-lv",
+        "4",
+        "-ngl",
+        "3",
+        "-t",
+        "4",
+        "-tb",
+        "4"
+      ],
+      "startup_seconds": 9.963792173999991,
+      "after": {
+        "thermal": {
+          "cpu_speed_limit_pct": 70,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 3072.00M  used = 1718.25M  free = 1353.75M  (encrypted)",
+          "swapins": 11387349,
+          "swapouts": 13186633
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "placement": [
+        "0.00.810.181 I load_tensors: offloaded 3/31 layers to GPU"
+      ],
+      "metal_buffers": [
+        "0.00.810.198 I load_tensors: MTL0_Private model buffer size =  1710.28 MiB",
+        "0.08.261.022 I llama_kv_cache: MTL0_Private KV buffer size =     4.00 MiB",
+        "0.08.377.543 I llama_kv_cache: MTL0_Private KV buffer size =     8.00 MiB",
+        "0.08.392.819 I sched_reserve: MTL0_Private compute buffer size =    22.53 MiB"
+      ]
+    },
+    {
+      "threads": 3,
+      "gpu_layers": 2,
+      "before": {
+        "thermal": {
+          "cpu_speed_limit_pct": 70,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 3072.00M  used = 1718.25M  free = 1353.75M  (encrypted)",
+          "swapins": 11387413,
+          "swapouts": 13186633
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "trials": [
+        {
+          "task": "shipment",
+          "request_seconds": 8.46001445799999,
+          "answer": "43",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 8097.825,
+            "prompt_per_token_ms": 179.95166666666665,
+            "prompt_per_second": 5.557047725778219,
+            "predicted_n": 3,
+            "predicted_ms": 358.296,
+            "predicted_per_token_ms": 179.148,
+            "predicted_per_second": 5.581976912943488
+          }
+        },
+        {
+          "task": "routing",
+          "request_seconds": 6.839079625000011,
+          "answer": "Payroll",
+          "correct": false,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 45,
+            "prompt_ms": 6651.079,
+            "prompt_per_token_ms": 147.80175555555556,
+            "prompt_per_second": 6.76581950086595,
+            "predicted_n": 2,
+            "predicted_ms": 184.176,
+            "predicted_per_token_ms": 184.176,
+            "predicted_per_second": 5.429589088697767
+          }
+        },
+        {
+          "task": "sorting",
+          "request_seconds": 10.137702135999973,
+          "answer": "[3, 7, 12, 19]",
+          "correct": true,
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 42,
+            "prompt_ms": 6394.666,
+            "prompt_per_token_ms": 152.2539523809524,
+            "prompt_per_second": 6.567973995827146,
+            "predicted_n": 15,
+            "predicted_ms": 3737.916,
+            "predicted_per_token_ms": 266.994,
+            "predicted_per_second": 3.745402518408653
+          }
+        }
+      ],
+      "engine_flags": [
+        "--alias",
+        "gemma-tune",
+        "-dev",
+        "MTL0",
+        "--fit",
+        "off",
+        "--load-mode",
+        "mmap",
+        "-c",
+        "1024",
+        "-b",
+        "16",
+        "-ub",
+        "16",
+        "-np",
+        "1",
+        "--cache-ram",
+        "0",
+        "--no-warmup",
+        "--no-mmproj",
+        "--reasoning",
+        "off",
+        "--no-repack",
+        "--offline",
+        "--no-ui",
+        "--host",
+        "127.0.0.1",
+        "-lv",
+        "4",
+        "-ngl",
+        "2",
+        "-t",
+        "3",
+        "-tb",
+        "3"
+      ],
+      "startup_seconds": 7.638532566999999,
+      "after": {
+        "thermal": {
+          "cpu_speed_limit_pct": 75,
+          "cpu_scheduler_limit_pct": 100,
+          "thermal_warning": false
+        },
+        "memory": {
+          "swap_usage": "total = 3072.00M  used = 1686.25M  free = 1385.75M  (encrypted)",
+          "swapins": 11397406,
+          "swapouts": 13186633
+        },
+        "ac_power": true,
+        "memory_pressure_status": 0
+      },
+      "placement": [
+        "0.00.845.427 I load_tensors: offloaded 2/31 layers to GPU"
+      ],
+      "metal_buffers": [
+        "0.00.845.446 I load_tensors: MTL0_Private model buffer size =  1147.06 MiB",
+        "0.06.078.272 I llama_kv_cache: MTL0_Private KV buffer size =     4.00 MiB",
+        "0.06.220.503 I sched_reserve: MTL0_Private compute buffer size =    22.50 MiB"
+      ]
+    }
+  ],
+  "stock_profile": {
+    "threads": 3,
+    "gpu_layers": 3,
+    "before": {
+      "thermal": {
+        "cpu_speed_limit_pct": 100,
+        "cpu_scheduler_limit_pct": 100,
+        "thermal_warning": false
+      },
+      "memory": {
+        "swap_usage": "total = 2048.00M  used = 405.75M  free = 1642.25M  (encrypted)",
+        "swapins": 11231820,
+        "swapouts": 12687526
+      },
+      "ac_power": true,
+      "memory_pressure_status": 0
+    },
+    "trials": [],
+    "engine_flags": [
+      "--alias",
+      "gemma-tune",
+      "-dev",
+      "MTL0",
+      "--fit",
+      "off",
+      "--load-mode",
+      "mmap",
+      "-c",
+      "1024",
+      "-b",
+      "16",
+      "-ub",
+      "16",
+      "-np",
+      "1",
+      "--cache-ram",
+      "0",
+      "--no-warmup",
+      "--no-mmproj",
+      "--reasoning",
+      "off",
+      "--no-repack",
+      "--offline",
+      "--no-ui",
+      "--host",
+      "127.0.0.1",
+      "-lv",
+      "4",
+      "-ngl",
+      "3",
+      "-t",
+      "3",
+      "-tb",
+      "3"
+    ],
+    "startup_seconds": 13.622550614,
+    "sample": {
+      "prompt": "Continue this list of fruits, separating each word with a comma: apple, pear, peach,",
+      "method": "macOS sample, 3 s at 5 ms, started after first content event; all-process thread leaf counts include waiting threads",
+      "decode": {
+        "cache_n": 0,
+        "prompt_n": 32,
+        "prompt_ms": 25124.268,
+        "prompt_per_token_ms": 785.133375,
+        "prompt_per_second": 1.273668948285379,
+        "predicted_n": 32,
+        "predicted_ms": 10809.099,
+        "predicted_per_token_ms": 348.68061290322584,
+        "predicted_per_second": 2.8679541190250917
+      },
+      "top_leaf_symbols": [
+        {
+          "symbol": "__psynch_cvwait",
+          "leaf_samples": 8679
+        },
+        {
+          "symbol": "__workq_kernreturn",
+          "leaf_samples": 955
+        },
+        {
+          "symbol": "ggml_vec_dot_q4_K_q8_K_generic",
+          "leaf_samples": 881
+        },
+        {
+          "symbol": "__accept",
+          "leaf_samples": 480
+        },
+        {
+          "symbol": "ggml_vec_dot_q5_0_q8_0_generic",
+          "leaf_samples": 242
+        },
+        {
+          "symbol": "ggml_vec_dot_q8_0_q8_0",
+          "leaf_samples": 94
+        },
+        {
+          "symbol": "ggml_graph_compute_secondary_thread",
+          "leaf_samples": 82
+        },
+        {
+          "symbol": "ggml_graph_compute_thread",
+          "leaf_samples": 27
+        },
+        {
+          "symbol": "ggml_vec_dot_q6_K_q8_K_generic",
+          "leaf_samples": 21
+        },
+        {
+          "symbol": "ggml_vec_dot_f16_f32",
+          "leaf_samples": 8
+        },
+        {
+          "symbol": "ggml_compute_forward_flash_attn_ext_f16_one_chunk(ggml_compute_params const*, ggml_tensor*, int, int, long long, long long, float*, long long)",
+          "leaf_samples": 7
+        },
+        {
+          "symbol": "ggml_compute_forward_mul_mat_id",
+          "leaf_samples": 6
+        },
+        {
+          "symbol": "_platform_memmove$VARIANT$Haswell",
+          "leaf_samples": 5
+        },
+        {
+          "symbol": "ggml_compute_forward_glu",
+          "leaf_samples": 5
+        },
+        {
+          "symbol": "ggml_compute_forward_mul_mat",
+          "leaf_samples": 5
+        }
+      ],
+      "cpu_kernel_symbols_on_stacks": [
+        "ggml_compute_forward_flash_attn_ext",
+        "ggml_compute_forward_flash_attn_ext_f16_one_chunk",
+        "ggml_compute_forward_glu",
+        "ggml_compute_forward_mul_mat",
+        "ggml_compute_forward_mul_mat_id",
+        "ggml_compute_forward_rms_norm",
+        "ggml_compute_forward_rms_norm_mul_fused",
+        "ggml_compute_forward_rope_flt",
+        "ggml_compute_forward_soft_max",
+        "ggml_vec_dot_f16_f32",
+        "ggml_vec_dot_f32",
+        "ggml_vec_dot_q4_K_q8_K",
+        "ggml_vec_dot_q4_K_q8_K_generic",
+        "ggml_vec_dot_q5_0_q8_0",
+        "ggml_vec_dot_q5_0_q8_0_generic",
+        "ggml_vec_dot_q6_K_q8_K_generic",
+        "ggml_vec_dot_q8_0_q8_0"
+      ]
+    },
+    "after": {
+      "thermal": {
+        "cpu_speed_limit_pct": 93,
+        "cpu_scheduler_limit_pct": 100,
+        "thermal_warning": false
+      },
+      "memory": {
+        "swap_usage": "total = 2048.00M  used = 1384.50M  free = 663.50M  (encrypted)",
+        "swapins": 11242692,
+        "swapouts": 12946102
+      },
+      "ac_power": true,
+      "memory_pressure_status": 0
+    },
+    "placement": [
+      "0.00.689.840 I load_tensors: offloaded 3/31 layers to GPU"
+    ],
+    "metal_buffers": [
+      "0.00.689.882 I load_tensors: MTL0_Private model buffer size =  1710.28 MiB",
+      "0.08.290.390 I llama_kv_cache: MTL0_Private KV buffer size =     4.00 MiB",
+      "0.08.425.156 I llama_kv_cache: MTL0_Private KV buffer size =     8.00 MiB",
+      "0.08.445.015 I sched_reserve: MTL0_Private compute buffer size =    22.53 MiB"
+    ]
+  },
+  "selected_profile": null,
+  "exploratory_profile": {
+    "basis": "Fallback specified after observing the reference routing failure and before the remaining results. Maximize number of tuning tasks correct; compare geometric mean of wall-time ratios only on tasks passed by all equally accurate candidates and the reference; require at least two shared tasks.",
+    "reference": [
+      3,
+      3
+    ],
+    "selected": {
+      "threads": 4,
+      "gpu_layers": 2,
+      "wall_ratio_vs_reference": 0.8529880658257554
+    },
+    "shared_tasks": [
+      "shipment",
+      "sorting"
+    ],
+    "ranking": [
+      {
+        "threads": 4,
+        "gpu_layers": 2,
+        "wall_ratio_vs_reference": 0.8529880658257554
+      },
+      {
+        "threads": 4,
+        "gpu_layers": 3,
+        "wall_ratio_vs_reference": 0.8548597188672776
+      },
+      {
+        "threads": 3,
+        "gpu_layers": 4,
+        "wall_ratio_vs_reference": 0.9516407024884606
+      },
+      {
+        "threads": 3,
+        "gpu_layers": 2,
+        "wall_ratio_vs_reference": 0.9766834765512241
+      },
+      {
+        "threads": 3,
+        "gpu_layers": 3,
+        "wall_ratio_vs_reference": 1.0
+      },
+      {
+        "threads": 2,
+        "gpu_layers": 3,
+        "wall_ratio_vs_reference": 1.156679435641661
+      }
+    ],
+    "tasks_passed": [
+      {
+        "threads": 3,
+        "gpu_layers": 3,
+        "passed": [
+          "shipment",
+          "sorting"
+        ]
+      },
+      {
+        "threads": 4,
+        "gpu_layers": 2,
+        "passed": [
+          "shipment",
+          "sorting"
+        ]
+      },
+      {
+        "threads": 2,
+        "gpu_layers": 3,
+        "passed": [
+          "shipment",
+          "sorting"
+        ]
+      },
+      {
+        "threads": 3,
+        "gpu_layers": 4,
+        "passed": [
+          "shipment",
+          "sorting"
+        ]
+      },
+      {
+        "threads": 4,
+        "gpu_layers": 3,
+        "passed": [
+          "shipment",
+          "sorting"
+        ]
+      },
+      {
+        "threads": 3,
+        "gpu_layers": 2,
+        "passed": [
+          "shipment",
+          "sorting"
+        ]
+      }
+    ]
+  }
+}
