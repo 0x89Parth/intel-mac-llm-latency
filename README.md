@@ -1,5 +1,9 @@
 # Time to a correct local LLM answer on an Intel Mac
 
+**On one 2019 Intel MacBook Pro, rebuilding ToshLLM cut the median wait for the same correct Gemma explanation from 43.4 to 19.4 seconds.** Gemma 4 26B-A4B produced the same 46 output tokens in every run. Across five paired rounds on that Python prompt, the median time saving was **55%**, with individual savings of **47–60%**. Every answer passed the content and formatting checks. [Paired timings](REPORT.md#gemma-4-26b-a4b) · [Build-blind answer review](ANSWER-REVIEW.md#gemma-4-26b-a4b)
+
+On a separate first-answer probe after launching a fresh server, median wait fell from 31.2 to 21.3 seconds with the filesystem cache retained. The rebuild and release used different compilers and CPU instruction settings. These measurements describe the effect of switching complete builds on this laptop.
+
 ![Median warm time to a correct answer for each model and workload](results/warm-latency.png)
 
 This project compares the released ToshLLM v0.88.0 Intel binary with a local rebuild on the same Core i9-9880H and Radeon Pro 560X. The chart shows median time to a correct answer within matched pairs. Each task uses five rounds on one 2019 Intel MacBook Pro.
