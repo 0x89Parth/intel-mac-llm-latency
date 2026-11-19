@@ -10,3 +10,11 @@ This follow-up asks whether the earlier latency result extends beyond one repeat
 - Report substantive passes and strict passes out of all twelve prompts per build. Strict means the response gives the correct answer and obeys the requested output format. Publish the frozen automatic grades alongside a separate AI review of the distinct answers with build labels, timings and automatic decisions hidden.
 - For the primary reviewed latency comparison, include a prompt only when both builds received identical formatted input and both replies satisfy the frozen content and format requirements in the blind review. For code fixes require a pass on the frozen functional checks as well. Report the number of qualifying pairs, both median times, the median and full range of the per-prompt percentage savings, and the number with identical output tokens. Give the same-token subset and automatic-grade analysis separately where they differ. Show unsuccessful prompts and their timings too.
 - Compute each saving as `100 × (stock time − rebuilt time) / stock time`. Do not count repeated prompts from the earlier study in this sample. The sampling unit here is the distinct prompt, with one observation per build; requests sharing a server launch share its state. This study does not isolate individual instruction flags.
+
+The prompts span Python, SQL and JavaScript behavior, short technical explanations, extraction from records, and tested Python expressions. The benchmark sends the prompt text to the model. Expected answers, rubrics and functional cases stay in the scoring code. [Frozen prompts and checks](variety_workloads.py) · [Measurement script](compare_variety.py)
+
+With the same models and engines installed as in the [setup instructions](README.md#reproduce), this command writes a separate run file under `runs/`.
+
+```sh
+caffeinate -i python3 -Bu compare_variety.py --output runs/gemma-prompt-variety.json
+```

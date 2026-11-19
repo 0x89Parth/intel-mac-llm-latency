@@ -10,6 +10,8 @@ This project compares the released ToshLLM v0.88.0 Intel binary with a local reb
 
 [Before-and-after chart, correctness counts and paired results](REPORT.md) · [Build-blind review of the answers](ANSWER-REVIEW.md)
 
+[Follow-up study of 12 distinct prompts](VARIETY.md)
+
 The earlier fixed-sentence test measured Gemma decoding at 1.72 versus 4.14 output tokens/s. This study measures answer latency and correctness on additional workloads. [Earlier throughput experiment](https://github.com/0x89Parth/intel-mac-llm-bench/blob/944e7c7083cc854425ca4aaece1f2d15c9e975d0/README.md)
 
 ## Reproduce
